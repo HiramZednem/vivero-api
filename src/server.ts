@@ -33,6 +33,7 @@ export class Server {
     });
 
     this.app.use('/api/product', routes.ProductRoutes);
+    this.app.use('/api/order', routes.OrderRoutes);
 
   }
 
