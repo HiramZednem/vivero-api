@@ -32,7 +32,7 @@ export class Server {
       })
     });
 
-    this.app.use('/api/gym', routes.GymRoutes);
+    this.app.use('/api/product', routes.ProductRoutes);
 
   }
 

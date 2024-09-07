@@ -1,24 +1,24 @@
 import { prisma } from '../db/db';
 
 
-export const gymService = {
+export const productService = {
     getAll: async () => {
-            return await prisma.gyms.findMany()
+            return await prisma.products.findMany()
     },
     getById: async (id: number) => {
-        return await prisma.gyms.findUnique({
+        return await prisma.products.findUnique({
             where: {
                 id: id
             }
         })
     },
     create: async (data: any) => {
-        return await prisma.gyms.create({
+        return await prisma.products.create({
             data: data
         })
     },
     update: async (id: number, data: any) => {
-        return await prisma.gyms.update({
+        return await prisma.products.update({
             where: {
                 id: id
             },
@@ -26,7 +26,7 @@ export const gymService = {
         })
     },
     delete: async (id: number) => {
-        return await prisma.gyms.delete({
+        return await prisma.products.delete({
             where: {
                 id: id
             }

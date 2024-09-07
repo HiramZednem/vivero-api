@@ -1,6 +1,5 @@
-import GymRoutes from './gym.routes'
-
+import ProductRoutes from './product.routes'
 
 export const routes = {
-    GymRoutes,
+    ProductRoutes
 }

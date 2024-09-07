@@ -1,1 +1,1 @@
-export { gymController } from './gym.controller';
+export { productController } from './productController';
