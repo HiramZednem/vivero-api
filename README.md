@@ -42,3 +42,6 @@
 
 - Ensure that the `.env` file is correctly configured with your database connection string.
 - If you encounter any issues, check the logs for Docker and Node.js to troubleshoot.
+
+# Postman Documentation
+If you want to review the postmant documentation [click here](https://documenter.getpostman.com/view/19546457/2sAXjRW9u1)
