@@ -1,4 +1,5 @@
 import { prisma } from '../db/db';
+import { productService } from './product.service';
 
 
 export const orderService = {
@@ -31,5 +32,17 @@ export const orderService = {
                 id: id
             }
         })
+    },
+    authorizeOrder: async (id: number) => {
+        const order = await orderService.getById(id);
+        if (!order) {
+            throw new Error('Order not found');
+        }
+        const orderAuthorized = await productService.authorizeOrder(order.product_id, order.quantity);
+        if (!orderAuthorized) {
+            throw new Error('Problem authorizing order');
+        }
+        await orderService.update(id, { status: true });
+        return { message: `Order with id: ${order.id}, authorized`};
     }
 };

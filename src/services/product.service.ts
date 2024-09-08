@@ -31,5 +31,13 @@ export const productService = {
                 id: id
             }
         })
+    },
+    authorizeOrder: async (id: number, quantity: number) => {
+        return await prisma.products.update({
+            where: {
+                id: id
+            },
+            data: { quantity: { decrement: quantity } }
+        })
     }
 };
