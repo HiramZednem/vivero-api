@@ -14,6 +14,9 @@ export const orderController = {
     getById: async (req: Request, res: Response) => {
         try {
             const order = await orderService.getById(parseInt(req.params.id));
+            if (!order) {
+                return res.status(404).json({ error: 'Order not found' });
+            }
             return res.status(201).json(order);
         } catch (e) {
             res.status(500).json({ error: (e as Error).message });
@@ -35,7 +38,12 @@ export const orderController = {
     },
     update: async (req: Request, res: Response) => {
         try {
+            const orderExist = await orderService.getById(parseInt(req.params.id));
+            if (!orderExist) {
+                return res.status(404).json({ error: 'Order not found' });
+            }
             const order = await orderService.update(parseInt(req.params.id), req.body);
+            
             return res.status(200).json(order);
         } catch (e) {
             res.status(500).json({ error: (e as Error).message });
@@ -43,6 +51,10 @@ export const orderController = {
     },
     delete: async (req: Request, res: Response) => {
         try {
+            const orderExist = await orderService.getById(parseInt(req.params.id));
+            if (!orderExist) {
+                return res.status(404).json({ error: 'Order not found' });
+            }
             const order = await orderService.delete(parseInt(req.params.id));
             return res.status(200).json(order);
         } catch (e) {
